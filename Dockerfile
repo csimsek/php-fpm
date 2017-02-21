@@ -68,5 +68,6 @@ COPY default.conf /etc/nginx/conf.d/default.conf
 COPY fastcgi-php.conf /etc/nginx/fastcgi-php.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY service /etc/service
+COPY php.ini /etc/php7/php.ini
 
 ENTRYPOINT runsvdir /etc/service
