@@ -60,7 +60,7 @@ RUN apt-get -y install \
 RUN mkdir /run/php
 VOLUME /var/www/html
 
-COPY default.conf /etc/nginx/sites-available/default.conf
+COPY default.conf /etc/nginx/sites-available/default
 COPY fastcgi-php.conf /etc/nginx/fastcgi-php.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY service /etc/service
