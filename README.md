@@ -1,3 +1,3 @@
 PHP 7.0
-Alpine
+Ubuntu
 Nginx
