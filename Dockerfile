@@ -1,6 +1,8 @@
 FROM ubuntu:latest
 
-RUN apt-get update && apt-get -y dist-upgrade
+RUN apt-get update && apt-get -y dist-upgrade && apt-get -y install curl
+
+RUN curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | bash
 
 RUN apt-get -y install \
 	php-intl \
@@ -49,21 +51,24 @@ RUN apt-get -y install \
 	php-pdo \
 	php-bz2 \
 	php-mysqli \
-    php-imagick \
+	php-imagick \
+	php-memcached \
+	php7.0-phalcon \
 	nginx \
 	runit
 
 RUN mkdir /run/php
 VOLUME /var/www/html
 
-RUN rm -rf /var/lib/apt/*
-RUN rm -rf /usr/share/doc/*
-RUN rm -rf /usr/share/locale/*
-
 COPY default.conf /etc/nginx/sites-available/default.conf
 COPY fastcgi-php.conf /etc/nginx/fastcgi-php.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY service /etc/service
 COPY php.ini /etc/php/7.0/fpm/php.ini
+
+RUN apt-get clean && apt-get -y autoremove
+RUN rm -rf /var/lib/apt/*
+RUN rm -rf /usr/share/doc/*
+RUN rm -rf /usr/share/locale/*
 
 ENTRYPOINT runsvdir /etc/service
