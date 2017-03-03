@@ -71,7 +71,6 @@ RUN apt-get clean && apt-get -y autoremove && apt-get -y purge curl poppler-data
 	&& rm -rf /usr/share/doc/* \
 	&& rm -rf /usr/share/locale/* \
 	&& rm -rf /usr/share/i18n/* \
-	&& rm -rf /usr/share/man/* \
-
+	&& rm -rf /usr/share/man/*
 
 ENTRYPOINT runsvdir /etc/service
