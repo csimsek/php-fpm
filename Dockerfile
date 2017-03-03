@@ -73,4 +73,6 @@ RUN apt-get clean && apt-get -y autoremove && apt-get -y purge curl poppler-data
 	&& rm -rf /usr/share/i18n/* \
 	&& rm -rf /usr/share/man/*
 
+EXPOSE 80
+
 ENTRYPOINT runsvdir /etc/service
