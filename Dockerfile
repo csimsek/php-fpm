@@ -55,6 +55,7 @@ RUN apt-get -y install \
 	php-memcached \
 	php7.0-phalcon \
 	nginx \
+	nginx-extras \
 	runit
 
 RUN mkdir /run/php
