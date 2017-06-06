@@ -67,7 +67,8 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY service /etc/service
 COPY php.ini /etc/php/7.0/fpm/php.ini
 
-RUN apt-get clean && apt-get -y autoremove && apt-get -y purge curl poppler-data shared-mime-info \
+RUN apt-get clean && apt-get -y purge curl poppler-data shared-mime-info \
+	&& apt-get -y autoremove \
 	&& rm -rf /var/lib/apt/* \
 	&& rm -rf /usr/share/doc/* \
 	&& rm -rf /usr/share/locale/* \
