@@ -97,8 +97,6 @@ RUN apk add --update \
 	php7-simplexml \
 	php7-xmlwriter
 
-RUN mkdir -p /run/php
-RUN mkdir -p /log/php7
 VOLUME /var/www/html
 
 WORKDIR /var/www/html
