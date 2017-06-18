@@ -1,3 +1,4 @@
-PHP 7.0
-Ubuntu
+PHP 7.1
+Alpine
 Nginx
+Phalcon
