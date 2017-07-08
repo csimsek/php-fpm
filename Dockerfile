@@ -108,8 +108,7 @@ COPY php.ini /etc/php7/php.ini
 
 RUN apk del php7-dev perl bash file m4 autoconf \
 	curl binutils gcc g++ pkgconf \
-	git libc-dev make file libmagic \
-	&& rm -rf /var/cache/*
+	git libc-dev make file libmagic
 
 EXPOSE 80
 
