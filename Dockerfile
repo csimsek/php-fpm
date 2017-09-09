@@ -110,6 +110,8 @@ RUN apk del php7-dev perl bash file m4 autoconf \
 	curl binutils gcc g++ pkgconf \
 	git libc-dev make file libmagic
 
+RUN rm -rf /var/cache/*
+
 EXPOSE 80
 
 ENTRYPOINT runsvdir /etc/service
