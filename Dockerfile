@@ -1,16 +1,7 @@
 FROM alpine:latest
 
 RUN apk update && apk upgrade
-RUN apk --update add make autoconf g++ gcc libc-dev curl ca-certificates \
-	&& apk --update add nginx git runit tzdata bash php7-dev file nginx-mod-http-headers-more
-
-WORKDIR /tmp
-
-RUN git clone https://github.com/phalcon/cphalcon
-RUN cd cphalcon/build/ \
-	&& ./install \
-	&& rm -rf /tmp/* \
-	&& echo "extension=phalcon.so" > /etc/php7/conf.d/phalcon.ini
+RUN apk --update add nginx runit tzdata nginx-mod-http-headers-more
 
 RUN apk add --update \
 	php7 \
@@ -105,10 +96,6 @@ COPY default.conf /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY service /etc/service
 COPY php.ini /etc/php7/php.ini
-
-RUN apk del php7-dev perl bash file m4 autoconf \
-	curl binutils gcc g++ pkgconf \
-	git libc-dev make file libmagic
 
 RUN rm -rf /var/cache/*
 
